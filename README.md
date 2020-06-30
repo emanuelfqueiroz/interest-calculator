@@ -1,6 +1,6 @@
 # Interest Calculator
 
-### About:
+## About:
 
 - DDD
 - CQRS
@@ -9,7 +9,7 @@
 - .NET 3.1 : WebApis
 - .NET Standard : Classs Libraries
 
-### Apis
+## APIs
 
 ### RateAPI
 
@@ -19,8 +19,10 @@ return current rate
 
 the calculator requests rate from RateAPI, calculates interest and return total value as text with 2 decimal places. 
 
-## Run Application
+## How to run
 
- `docker-compose up -d`
+enter command: `docker-compose up -d`
 
 Path: *src/docker-compose.yaml*
+
+open: http://localhost:5003/swagger/index.html
