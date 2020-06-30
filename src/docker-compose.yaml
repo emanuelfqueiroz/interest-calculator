@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  calculatorapi:
+    image:  calculatorapi
+    build:
+      context: ./api_interest_calculator/
+      dockerfile: .Dockerfile
+    ports:
+      - "5003:80"
+  rateapi:
+    image: rateapi
+    build:
+      context: ./api_rate_info/
+      dockerfile: .Dockerfile
+    ports:
+      - "5004:80"

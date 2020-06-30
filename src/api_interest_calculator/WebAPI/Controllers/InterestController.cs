@@ -20,27 +20,28 @@ namespace WebAPI.Controllers
         {
             this._mediator = mediator;
         }
-
-
-        [HttpGet("/calculajuros")]
+        
+        [HttpGet("calculajuros")]
         [SwaggerResponse(200, type: typeof(decimal))]
         public async Task<ActionResult<decimal>> CalculateInterest([FromQuery] CalculatorQuery query)
         {
             var response = await _mediator.Send(query);          
-            return Ok(response.Total);
+            if(response.Status)
+                return Ok(response.TotalText);
+            return BadRequest(response);
         }
         [HttpGet("/showmethecode")]
         public string ShowMeTheCode([FromServices] IConfiguration configuration)
         {
             return configuration["github"]; 
         }
-        [HttpGet("/calculajuros/detalhes")]
+        [HttpGet("calculajuros/detalhes")]
         [SwaggerResponse(200, type: typeof(decimal))]
         public async Task<ActionResult<decimal>> CalculateInterestInfo([FromQuery] CalculatorQuery query)
         {
-            return Response(await _mediator.Send(query));
+            return Result(await _mediator.Send(query));
         }
-        private ActionResult Response(Response response)
+        private ActionResult Result(Response response)
         {
             if (response.Status)
                 return Ok(response);

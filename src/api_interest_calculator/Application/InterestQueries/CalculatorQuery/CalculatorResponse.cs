@@ -14,6 +14,8 @@ namespace Application.InterestQueries.CalculatorQuery
         public decimal Rate { get; set; }
         public decimal Interest => Total - InitialValue;
 
+        public object TotalText => Total.ToString("N2");
+
         //List<Snapshot> 
         //public CalculatorResponse(decimal initialValue, decimal finalValue, decimal rate )
         //{
@@ -21,6 +23,6 @@ namespace Application.InterestQueries.CalculatorQuery
         //    FinalValue = Decimal.Round(finalValue, 2);
         //    Rate = Decimal.Round(rate, 2);
         //}
-        
+
     }
 }
